@@ -22,16 +22,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking }) => {
         <img
           src={ASSETS.heroVehicles}
           alt="Lavage DKB Background Véhicules et Eau"
-          className="w-full h-full object-cover object-center opacity-45 scale-105 transform animate-pulse-slow"
+          className="w-full h-full object-cover object-center opacity-85 contrast-105 brightness-105 scale-105 transform transition-opacity duration-700"
         />
 
-        {/* Dark Royal Blue Radial Overlay Gradients for crisp legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#020712]/80 via-[#020a1c]/60 to-[#020712]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-600/20 via-[#020712]/70 to-[#020712]" />
+        {/* Subtle Top & Bottom Gradient Overlay for Text Contrast without darkening center */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#020712]/75 via-[#020712]/30 to-[#020712]/95" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-600/10 via-transparent to-[#020712]/80" />
 
         {/* Light Flares */}
-        <div className="absolute top-1/4 left-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 right-10 w-[500px] h-[500px] bg-cyan-400/15 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-10 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 right-10 w-[500px] h-[500px] bg-cyan-400/10 rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center text-center my-auto">
