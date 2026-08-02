@@ -22,6 +22,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking }) => {
         <img
           src={ASSETS.heroVehicles}
           alt="Lavage DKB Background Véhicules et Eau"
+          fetchPriority="high"
+          decoding="async"
           className="w-full h-full object-cover object-center opacity-85 contrast-105 brightness-105 scale-105 transform transition-opacity duration-700"
         />
 

@@ -32,6 +32,8 @@ export const BeforeAfterCard: React.FC<BeforeAfterCardProps> = ({
       <img
         src={afterImage}
         alt={`${title} Après`}
+        loading="lazy"
+        decoding="async"
         className="absolute inset-0 w-full h-full object-cover"
       />
 
@@ -43,6 +45,8 @@ export const BeforeAfterCard: React.FC<BeforeAfterCardProps> = ({
         <img
           src={beforeImage}
           alt={`${title} Avant`}
+          loading="lazy"
+          decoding="async"
           className="absolute inset-y-0 left-0 h-full max-w-none object-cover"
           style={{ width: '100%', height: '100%' }}
         />

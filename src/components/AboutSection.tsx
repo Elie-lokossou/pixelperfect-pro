@@ -97,6 +97,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                   <img
                     src={ASSETS.aboutDetailer}
                     alt="Technicien essuyant capot de voiture avec chiffon microfibre jaune"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
                   />
                   {/* Subtle Vignette Overlay */}
