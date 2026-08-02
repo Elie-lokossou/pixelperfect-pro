@@ -65,7 +65,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking }) => {
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-100 to-slate-400 drop-shadow-[0_10px_25px_rgba(0,0,0,0.95)]">
               LAVAGE
             </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#FFF8B3] via-[#FFB800] to-[#C47D00] drop-shadow-[0_10px_30px_rgba(0,0,0,0.95)] 3d-gold-title">
+            <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#FFF8B3] via-[#FFB800] to-[#C47D00] drop-shadow-[0_10px_30px_rgba(0,0,0,0.95)] gold-title-3d">
               DKB
             </span>
           </h1>
