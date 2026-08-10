@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Check, Clock, ShieldCheck, Sparkles, PhoneCall } from 'lucide-react';
+import { X, Check, Clock, Sparkles, PhoneCall } from 'lucide-react';
 
 interface ServiceDetailModalProps {
   isOpen: boolean;
@@ -18,81 +18,80 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
 
   const serviceData: Record<string, any> = {
     auto: {
-      title: 'NETTOYAGE & DETAILING AUTO',
+      title: 'LAVAGE & DETAILING AUTO',
       badge: 'AUTOMOBILE',
       heroImg: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80',
       description:
-        'Un traitement intégral pour redonner à votre véhicule son éclat sortie de concession. Nous traitons aussi bien les carrosseries délicates que les cuirs et moquettes les plus exigeants.',
+        'Un traitement intégral pour redonner à votre véhicule tout son éclat. Nous prenons soin des carrosseries délicates ainsi que des sièges, moquettes et plastiques avec des équipements professionnels haute pression et mousse active.',
       included: [
         'Lavage extérieur manuel haute pression à la mousse active',
-        'Nettoyage et dégraissage complet des jantes & passages de roues',
+        'Nettoyage et dégraissage complet des jantes & pneus',
         'Aspiration intégrale de l’habitacle, coffre et moquettes',
-        'Shampoing et extraction des sièges en tissu ou traitement nourrisseur pour cuirs',
-        'Dépoussiérage et rénovation des plastiques avec protection UV',
-        'Lavage des vitres intérieures et extérieures sans trace',
-        'Désinfection à l’ozone pour éliminer bactéries et mauvaises odeurs',
+        'Shampoing en profondeur des sièges et rénovation des cuirs',
+        'Dépoussiérage et soin protecteur pour tableau de bord & plastiques',
+        'Lavage vitres intérieures et extérieures sans trace',
+        'Désinfection et parfum habitacle longue durée',
       ],
       packages: [
-        { name: 'Formule Express', price: '35 €', duration: '45 min' },
-        { name: 'Formule Complet Interieur & Extérieur', price: '75 €', duration: '1h 30 min' },
-        { name: 'VIP Detailing & Protection', price: '140 €', duration: '3h 00 min' },
+        { name: 'Formule Simple (Express)', price: '1 000 - 2 000 FCFA', duration: '30-45 min' },
+        { name: 'Formule Complet', price: '1 500 - 3 000 FCFA', duration: '1h 15 min' },
+        { name: 'Lavage à Fond (Intégral)', price: 'Dès 13 000 FCFA', duration: '3h 00 min' },
       ],
     },
     moto: {
-      title: 'NETTOYAGE & SOIN MOTO',
-      badge: 'DEUX-ROUÈS',
+      title: 'LAVAGE & SOIN MOTO',
+      badge: 'DEUX-ROUES',
       heroImg: 'https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=1200&q=80',
       description:
-        'Chaque recoin de votre moto nécessite une attention particulière. Nous utilisons des dégraissants neutres et des souffleurs d’air chaud pour éviter toute corrosion.',
+        'Chaque recoin de votre moto nécessite une attention particulière. Nous utilisons des dégraissants doux et des techniques de séchage soignées pour préserver la mécanique et la brillance.',
       included: [
-        'Prélavage mousse neutre pour carénages sensibles',
-        'Dégraissage minutieux de la chaîne, couronne et kit chaîne',
+        'Prélavage mousse active pour carénages',
+        'Dégraissage minutieux de la chaîne et des jantes',
         'Lavage manuel du moteur, pot d’échappement et étriers',
-        'Séchage complet à l’air chaud pulsé',
+        'Séchage soigné microfibre et soufflerie',
         'Lustrage carénage et traitement brillant pneus',
-        'Graissage haute performance de la chaîne de transmission',
+        'Graissage et protection des parties métalliques',
       ],
       packages: [
-        { name: 'Quick Wash Moto', price: '25 €', duration: '30 min' },
-        { name: 'Soin Intégral & Finition Pro', price: '50 €', duration: '1h 00 min' },
+        { name: 'Lavage Standard Moto', price: '500 FCFA', duration: '20 min' },
+        { name: 'Soin Complet Moto', price: '1 000 FCFA', duration: '45 min' },
       ],
     },
     tapis: {
-      title: 'NETTOYAGE PROFOND TAPIS & MOQUETTES',
+      title: 'LAVAGE PROFOND TAPIS & MOQUETTES',
       badge: 'TEXTILES',
       heroImg: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80',
       description:
-        'Éliminez en profondeur les acariens, la poussière incrustée et les taches tenaces grâce à notre méthode professionnelle d’injection-extraction.',
+        'Éliminez en profondeur la poussière incrustée, les acariens et les taches tenaces grâce à notre méthode professionnelle de lavage et injection-extraction.',
       included: [
-        'Aspiration haute dépression de la fibre',
-        'Prétraitement enzymatique anti-taches (café, huile, boue...)',
-        'Nettoyage par injection/extraction haute pression',
-        'Brossage mécanique doux respectueux des fibres',
-        'Application d’un traitement désinfectant et désodorisant',
-        'Séchage accéléré sur soufflerie thermique',
+        'Dépoussiérage et battage haute puissance de la fibre',
+        'Prétraitement anti-taches (boue, graisses, boissons...)',
+        'Nettoyage par shampoing actif haute efficacité',
+        'Brossage mécanique doux respectueux du textile',
+        'Application d’un traitement désinfectant et assainissant',
+        'Séchage soigné',
       ],
       packages: [
-        { name: 'Tapis Petit / Moyen Format', price: '20 €', duration: '30 min' },
-        { name: 'Grand Tapis / Tapis de Luxe', price: '40 €', duration: '1h 00 min' },
+        { name: 'Nettoyage Tapis Simple', price: '1 500 FCFA', duration: '30 min' },
+        { name: 'Shampoing Tapis Complet', price: '3 000 FCFA', duration: '1h 00 min' },
       ],
     },
     meuble: {
-      title: 'NETTOYAGE CANAPÉ, FAUTEUIL & MATELAS',
+      title: 'LAVAGE CANAPÉ, FAUTEUIL & MEUBLES',
       badge: 'AMEUBLEMENT',
       heroImg: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1200&q=80',
       description:
-        'Redonnez vie à votre mobilier en tissu ou cuir. Nos produits hypoallergéniques restaurent les couleurs originelles sans détremper les mousses.',
+        'Redonnez vie à vos canapés, fauteuils et chaises en tissu ou cuir. Nos produits professionnels éliminent les salissures tout en ravivant l’éclat de votre mobilier.',
       included: [
-        'Diagnostic du tissu et test de tenue des couleurs',
-        'Nettoyage en profondeur des dossiers, assises et accoudoirs',
-        'Traitement anti-acariens et traitement anti-odeurs certifié',
-        'Extraction maximale de l’humidité pour une réutilisation rapide',
-        'Option imperméabilisante anti-taches disponible',
+        'Diagnostic du tissu et dépoussiérage approfondi',
+        'Nettoyage et détachage des assises, dossiers et accoudoirs',
+        'Traitement anti-acariens et désodorisation textile',
+        'Extraction maximale de l’humidité',
+        'Option soin nourrissant pour canapés en cuir',
       ],
       packages: [
-        { name: 'Fauteuil / Siège individuel', price: '30 €', duration: '45 min' },
-        { name: 'Canapé 2 à 4 places', price: '85 €', duration: '1h 30 min' },
-        { name: 'Grand Canapé d’Angle / XXL', price: '120 €', duration: '2h 00 min' },
+        { name: 'Fauteuil / Chaise', price: '2 000 FCFA', duration: '45 min' },
+        { name: 'Canapé Complet', price: '8 000 FCFA', duration: '1h 30 min' },
       ],
     },
   };
@@ -171,7 +170,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
                       <span>{pkg.duration}</span>
                     </div>
                   </div>
-                  <div className="font-heading font-black text-xl text-[#FFB800]">
+                  <div className="font-heading font-black text-lg text-[#FFB800]">
                     {pkg.price}
                   </div>
                 </div>
@@ -184,7 +183,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
         <div className="p-4 border-t border-[#122240] bg-[#020714] flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2 text-xs text-slate-300">
             <PhoneCall size={14} className="text-[#FFB800]" />
-            <span>Besoin d'un devis sur mesure ? <strong className="text-white">06 12 34 56 78</strong></span>
+            <span>Besoin d'un renseignement ? <strong className="text-white">01 99 24 88 03</strong></span>
           </div>
           <button
             onClick={() => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, MapPin, ChevronUp } from 'lucide-react';
+import { Phone, Mail, MapPin, ChevronUp, Clock, MessageCircle, ArrowUpRight } from 'lucide-react';
 
 interface FooterProps {
   setActiveSection: (section: string) => void;
@@ -40,12 +40,16 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="bg-[#01050e] text-slate-300 pt-16 pb-8 border-t border-[#121f38] relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main 5 Columns Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 pb-12 border-b border-[#0f1a2e]">
-          {/* Col 1: Logo & Socials */}
-          <div className="space-y-6">
+    <footer className="bg-[#01050e] text-slate-300 pt-12 sm:pt-16 pb-8 border-t border-[#121f38] relative overflow-hidden">
+      {/* Ambient background glow */}
+      <div className="absolute top-0 right-1/4 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Main Grid: Responsive 1 col (mobile) -> 2 cols (tablet) -> 4/5 cols (desktop) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 pb-12 border-b border-[#0f1a2e]">
+          
+          {/* Col 1: Brand & Tagline & Quick CTAs (Cols 1-4 on Desktop) */}
+          <div className="sm:col-span-2 lg:col-span-4 space-y-5">
             <a
               href="#accueil"
               onClick={(e) => {
@@ -64,9 +68,33 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
             </a>
 
-            {/* Social Icons (Facebook, Instagram, TikTok) */}
-            <div className="flex items-center space-x-3">
-              {/* Facebook */}
+            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm">
+              Votre centre de référence pour le lavage et l’entretien soigné de motos, véhicules légers, SUV, tapis et meubles à Dèkoungbé.
+            </p>
+
+            {/* Quick Action Buttons (Call & WhatsApp) */}
+            <div className="flex flex-wrap items-center gap-2.5 pt-1">
+              <a
+                href="https://wa.me/2290199248803?text=Bonjour%20Lavage%20DKB%2C%20je%20souhaite%20prendre%20un%20rendez-vous"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-xs font-heading font-bold uppercase transition-all duration-200"
+              >
+                <MessageCircle className="w-3.5 h-3.5" />
+                <span>WhatsApp</span>
+              </a>
+
+              <a
+                href="tel:+2290199248803"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#FFB800]/10 hover:bg-[#FFB800]/20 border border-[#FFB800]/30 text-[#FFB800] text-xs font-heading font-bold uppercase transition-all duration-200"
+              >
+                <Phone className="w-3.5 h-3.5" />
+                <span>01 99 24 88 03</span>
+              </a>
+            </div>
+
+            {/* Social Icons */}
+            <div className="flex items-center space-x-3 pt-2">
               <a
                 href="#facebook"
                 aria-label="Facebook"
@@ -77,7 +105,6 @@ export const Footer: React.FC<FooterProps> = ({
                 </svg>
               </a>
 
-              {/* Instagram */}
               <a
                 href="#instagram"
                 aria-label="Instagram"
@@ -88,7 +115,6 @@ export const Footer: React.FC<FooterProps> = ({
                 </svg>
               </a>
 
-              {/* TikTok */}
               <a
                 href="#tiktok"
                 aria-label="TikTok"
@@ -101,106 +127,152 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
           </div>
 
-          {/* Col 2: Navigation */}
-          <div className="space-y-3">
+          {/* Col 2: Navigation (Cols 5-6 on Desktop) */}
+          <div className="lg:col-span-2 space-y-3">
             <h4 className="font-heading font-black text-xs text-white tracking-widest uppercase">
               NAVIGATION
             </h4>
             <ul className="space-y-2 text-xs font-medium">
-              {['Accueil', 'Prestations', 'À propos', 'Galerie', 'Avis', 'Contact'].map((item) => {
-                const key = item.toLowerCase().replace(' ', '').replace('à', 'a');
-                return (
-                  <li key={item}>
-                    <button
-                      onClick={() => handleNavClick(key === 'àpropos' ? 'apropos' : key)}
-                      className="text-slate-400 hover:text-[#FFB800] transition-colors"
-                    >
-                      {item}
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          {/* Col 3: Prestations */}
-          <div className="space-y-3">
-            <h4 className="font-heading font-black text-xs text-white tracking-widest uppercase">
-              PRESTATIONS
-            </h4>
-            <ul className="space-y-2 text-xs font-medium">
-              {['Auto', 'Moto', 'Tapis', 'Meuble'].map((item) => (
-                <li key={item}>
+              {[
+                { label: 'Accueil', id: 'accueil' },
+                { label: 'Prestations', id: 'prestations' },
+                { label: 'Calculateur', id: 'calculateur' },
+                { label: 'À propos', id: 'apropos' },
+                { label: 'Galerie', id: 'galerie' },
+                { label: 'Avis', id: 'avis' },
+                { label: 'Contact', id: 'contact' },
+              ].map((item) => (
+                <li key={item.id}>
                   <button
-                    onClick={() => handleNavClick('prestations')}
-                    className="text-slate-400 hover:text-[#FFB800] transition-colors"
+                    onClick={() => handleNavClick(item.id)}
+                    className="text-slate-400 hover:text-[#FFB800] transition-colors py-0.5 inline-block text-left"
                   >
-                    {item}
+                    {item.label}
                   </button>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Col 4: Contact */}
-          <div className="space-y-3">
+          {/* Col 3: Tarifs & Prestations (Cols 7-8 on Desktop) */}
+          <div className="lg:col-span-2 space-y-3">
             <h4 className="font-heading font-black text-xs text-white tracking-widest uppercase">
-              CONTACT
+              TARIFS DÈKOUNGBÉ
             </h4>
-            <div className="space-y-2.5 text-xs text-slate-400 font-medium">
-              <div className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#FFB800] shrink-0" />
-                <a href="tel:0612345678" className="hover:text-white transition-colors">
-                  06 12 34 56 78
-                </a>
+            <ul className="space-y-2 text-xs font-medium text-slate-400">
+              <li className="flex items-center justify-between gap-2">
+                <span>Moto :</span>
+                <strong className="text-[#FFB800]">500 F</strong>
+              </li>
+              <li className="flex items-center justify-between gap-2">
+                <span>Petite voiture :</span>
+                <strong className="text-white">1 000 - 1 500 F</strong>
+              </li>
+              <li className="flex items-center justify-between gap-2">
+                <span>Grande voiture :</span>
+                <strong className="text-white">2 000 - 3 000 F</strong>
+              </li>
+              <li className="flex items-center justify-between gap-2">
+                <span>Lavage à fond :</span>
+                <strong className="text-[#FFB800]">Dès 13 000 F</strong>
+              </li>
+              <li className="pt-1">
+                <button
+                  onClick={() => handleNavClick('prestations')}
+                  className="text-xs text-[#FFB800] hover:underline inline-flex items-center gap-1"
+                >
+                  <span>Voir tous les détails</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 4: Contact & Localisation (Cols 9-12 on Desktop) */}
+          <div className="sm:col-span-2 lg:col-span-4 space-y-4">
+            <h4 className="font-heading font-black text-xs text-white tracking-widest uppercase">
+              CONTACT & ACCÈS
+            </h4>
+            
+            <div className="space-y-3 text-xs text-slate-300 font-medium">
+              {/* Telephone */}
+              <div className="flex items-start gap-3">
+                <Phone className="w-4 h-4 text-[#FFB800] shrink-0 mt-0.5" />
+                <div>
+                  <a
+                    href="tel:+2290199248803"
+                    className="text-white font-bold hover:text-[#FFB800] transition-colors"
+                  >
+                    +229 01 99 24 88 03
+                  </a>
+                  <p className="text-[11px] text-slate-400">Appels directs & WhatsApp</p>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#FFB800] shrink-0" />
-                <a href="mailto:contact@lavage-dkb.fr" className="hover:text-white transition-colors break-all">
-                  contact@lavage-dkb.fr
-                </a>
+
+              {/* Email */}
+              <div className="flex items-start gap-3">
+                <Mail className="w-4 h-4 text-[#FFB800] shrink-0 mt-0.5" />
+                <div>
+                  <a
+                    href="mailto:marval1598@gmail.com"
+                    className="text-white hover:text-[#FFB800] transition-colors break-all"
+                  >
+                    marval1598@gmail.com
+                  </a>
+                  <p className="text-[11px] text-slate-400">Support & demandes de devis</p>
+                </div>
               </div>
-              <div className="flex items-start gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#FFB800] shrink-0 mt-0.5" />
-                <span>
-                  123 Rue de la Propreté<br />
-                  75000 Paris
-                </span>
+
+              {/* Location */}
+              <div className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-[#FFB800] shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-white font-semibold leading-snug">
+                    Von avant l’église catholique de Dèkoungbé
+                  </p>
+                  <p className="text-[11px] text-slate-400">Dèkoungbé, Godomey - Bénin</p>
+                </div>
+              </div>
+
+              {/* Horaires */}
+              <div className="flex items-start gap-3 pt-1 border-t border-[#101b30]">
+                <Clock className="w-4 h-4 text-[#FFB800] shrink-0 mt-0.5" />
+                <div className="text-[11px] text-slate-400">
+                  <span className="text-white font-semibold">Lun - Sam :</span> 7h30 - 19h00 • <span className="text-white font-semibold">Dim :</span> 8h00 - 18h00
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Col 5: Horaires */}
-          <div className="space-y-3">
-            <h4 className="font-heading font-black text-xs text-white tracking-widest uppercase">
-              HORAIRES
-            </h4>
-            <div className="space-y-2 text-xs text-slate-400 font-medium">
-              <div>
-                <p className="text-white font-semibold">Lundi - Samedi</p>
-                <p className="text-slate-400">8h00 - 19h00</p>
-              </div>
-              <div className="pt-1">
-                <p className="text-white font-semibold">Dimanche</p>
-                <p className="text-slate-400">Sur rendez-vous</p>
-              </div>
-            </div>
-          </div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* Bottom Bar: Responsive Flex */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p className="text-center sm:text-left">
-            © 2026 LAVAGE DKB. Tous droits réservés.
+            © 2026 LAVAGE DKB — Dèkoungbé. Tous droits réservés.
           </p>
 
-          <button
-            onClick={scrollToTop}
-            className="w-8 h-8 rounded bg-[#0a1529] border border-slate-800 flex items-center justify-center text-slate-300 hover:text-[#FFB800] hover:border-[#FFB800] transition-colors"
-            aria-label="Retour en haut"
-          >
-            <ChevronUp className="w-4 h-4" />
-          </button>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => onOpenContact && onOpenContact()}
+              className="hover:text-slate-300 transition-colors"
+            >
+              Contact
+            </button>
+            <button
+              onClick={onOpenBooking}
+              className="text-[#FFB800] hover:underline font-bold"
+            >
+              Prendre RDV
+            </button>
+            <button
+              onClick={scrollToTop}
+              className="w-8 h-8 rounded bg-[#0a1529] border border-slate-800 flex items-center justify-center text-slate-300 hover:text-[#FFB800] hover:border-[#FFB800] transition-colors"
+              aria-label="Retour en haut"
+            >
+              <ChevronUp className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Phone, MessageSquare, ChevronUp } from 'lucide-react';
+import { Calendar, Phone, MessageCircle } from 'lucide-react';
 
 interface FloatingCTAProps {
   onOpenBooking: () => void;
@@ -24,15 +24,29 @@ export const FloatingCTA: React.FC<FloatingCTAProps> = ({
 
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3 items-end animate-in fade-in slide-in-from-bottom-5 duration-300">
-      {/* WhatsApp / Phone Quick Call Button */}
+      {/* WhatsApp Quick Action Button */}
       <a
-        href="tel:0612345678"
+        href="https://wa.me/2290199248803?text=Bonjour%20Lavage%20DKB,%20je%20souhaite%20prendre%20rendez-vous"
+        target="_blank"
+        rel="noopener noreferrer"
         className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-[0_4px_15px_rgba(16,185,129,0.4)] transition-all duration-300 transform hover:scale-110"
+        aria-label="WhatsApp Lavage DKB"
+      >
+        <MessageCircle className="w-5 h-5" />
+        <span className="absolute right-14 bg-black/85 backdrop-blur-md text-white text-[11px] font-heading font-bold px-3 py-1.5 rounded-lg border border-slate-700 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-xl">
+          WhatsApp : 01 99 24 88 03
+        </span>
+      </a>
+
+      {/* Direct Call Button */}
+      <a
+        href="tel:+2290199248803"
+        className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-[#122240] hover:bg-[#1a3260] text-[#FFB800] border border-[#FFB800]/40 shadow-[0_4px_15px_rgba(255,184,0,0.25)] transition-all duration-300 transform hover:scale-110"
         aria-label="Appeler directement"
       >
         <Phone className="w-5 h-5" />
-        <span className="absolute right-14 bg-black/80 backdrop-blur-md text-white text-[11px] font-heading font-bold px-3 py-1.5 rounded-lg border border-slate-700 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-          Appel Direct: 06 12 34 56 78
+        <span className="absolute right-14 bg-black/85 backdrop-blur-md text-white text-[11px] font-heading font-bold px-3 py-1.5 rounded-lg border border-slate-700 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-xl">
+          Appel : 01 99 24 88 03
         </span>
       </a>
 

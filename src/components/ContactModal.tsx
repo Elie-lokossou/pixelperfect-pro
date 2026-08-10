@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from 'lucide-react';
+import { X, Phone, Mail, MapPin, Clock, Send, CheckCircle2, MessageCircle } from 'lucide-react';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -25,7 +25,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           <div className="flex items-center gap-2">
             <Phone className="text-[#FFB800] w-5 h-5" />
             <h3 className="font-heading font-black text-xl text-white tracking-wide uppercase">
-              CONTACT & ACCÈS
+              CONTACT & LOCALISATION
             </h3>
           </div>
           <button
@@ -45,43 +45,64 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             {/* Contact Details */}
             <div className="space-y-4 text-xs text-slate-300">
               <div className="p-4 rounded-xl bg-[#020714] border border-[#1a2d52] space-y-3">
-                <div className="flex items-center gap-3">
+                <a
+                  href="tel:+2290199248803"
+                  className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-900/60 transition-colors"
+                >
                   <div className="p-2 rounded-lg bg-[#FFB800]/10 text-[#FFB800]">
                     <Phone size={18} />
                   </div>
                   <div>
-                    <p className="font-bold text-white text-sm">06 12 34 56 78</p>
-                    <p className="text-[#FFB800] text-[10px]">Appel direct ou WhatsApp</p>
+                    <p className="font-bold text-white text-sm">01 99 24 88 03</p>
+                    <p className="text-[#FFB800] text-[10px]">Appel direct</p>
                   </div>
-                </div>
+                </a>
 
-                <div className="flex items-center gap-3">
+                <a
+                  href="https://wa.me/2290199248803?text=Bonjour%20Lavage%20DKB,%20je%20souhaite%20prendre%20rendez-vous"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-900/60 transition-colors"
+                >
+                  <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400">
+                    <MessageCircle size={18} />
+                  </div>
+                  <div>
+                    <p className="font-bold text-white text-sm">WhatsApp Direct</p>
+                    <p className="text-emerald-400 text-[10px]">Disponible 7j/7</p>
+                  </div>
+                </a>
+
+                <a
+                  href="mailto:marval1598@gmail.com"
+                  className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-900/60 transition-colors"
+                >
                   <div className="p-2 rounded-lg bg-[#FFB800]/10 text-[#FFB800]">
                     <Mail size={18} />
                   </div>
                   <div>
-                    <p className="font-bold text-white text-sm">contact@lavage-dkb.fr</p>
+                    <p className="font-bold text-white text-sm">marval1598@gmail.com</p>
                     <p className="text-slate-400 text-[10px]">Réponse sous 24h</p>
                   </div>
-                </div>
+                </a>
 
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-3 p-2">
                   <div className="p-2 rounded-lg bg-[#FFB800]/10 text-[#FFB800]">
                     <MapPin size={18} />
                   </div>
                   <div>
-                    <p className="font-bold text-white text-sm">123 Rue de la Propreté</p>
-                    <p className="text-slate-400 text-[10px]">75000 Paris, France</p>
+                    <p className="font-bold text-white text-sm">Dèkoungbé</p>
+                    <p className="text-slate-300 text-xs">Von avant l’église catholique de Dèkoungbé</p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-3 p-2">
                   <div className="p-2 rounded-lg bg-[#FFB800]/10 text-[#FFB800]">
                     <Clock size={18} />
                   </div>
                   <div>
-                    <p className="font-bold text-white text-sm">Lun - Sam : 8h00 - 19h00</p>
-                    <p className="text-slate-400 text-[10px]">Dimanche sur RDV</p>
+                    <p className="font-bold text-white text-sm">Lun - Sam : 7h30 - 18h30</p>
+                    <p className="text-slate-400 text-[10px]">Dimanche sur rendez-vous</p>
                   </div>
                 </div>
               </div>
@@ -123,12 +144,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
                   <div>
                     <label className="block text-[11px] font-heading font-bold text-slate-300 mb-1">
-                      Email ou Téléphone *
+                      Téléphone ou WhatsApp *
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="Email ou téléphone"
+                      placeholder="01 99 24 88 03"
                       value={msg.phone}
                       onChange={(e) => setMsg({ ...msg, phone: e.target.value })}
                       className="w-full bg-[#020714] border border-[#1a2d52] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#FFB800]"
@@ -142,10 +163,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                     <textarea
                       required
                       rows={3}
-                      placeholder="Des précisions sur votre véhicule ou votre demande..."
+                      placeholder="Type de véhicule (Moto, Voiture, Meuble) ou question..."
                       value={msg.text}
                       onChange={(e) => setMsg({ ...msg, text: e.target.value })}
-                      className="w-full bg-[#020714] border border-[#1a2d52] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#FFB800]"
+                      className="w-full bg-[#020814] border border-[#1a2d52] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#FFB800]"
                     />
                   </div>
 

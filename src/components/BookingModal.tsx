@@ -30,21 +30,90 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
   const formulasMap: Record<string, any[]> = {
     auto: [
-      { id: 'express', name: 'Formule Express', price: '35 €', time: '45 min', features: ['Lavage extérieur haute pression', 'Séchage microfibre pro', 'Nettoyage vitres extérieures'] },
-      { id: 'complet', name: 'Formule Complet', price: '75 €', time: '1h 30 min', features: ['Lavage Intérieur & Extérieur', 'Aspiration profonde & dépoussiérage', 'Shampoing tapis & sièges', 'Finition brillant pneus'] },
-      { id: 'vip', name: 'VIP Detail Pro', price: '140 €', time: '3h 00 min', features: ['Traitement hydrophobe carrosserie', 'Décontamination jantes & étriers', 'Traitement cuir & plastique UV', 'Désinfection habitacle à l’ozone'] },
+      {
+        id: 'express',
+        name: 'Formule Simple (Express)',
+        price: '1 000 - 2 000 FCFA',
+        time: '30-45 min',
+        features: [
+          'Lavage extérieur mousse active',
+          'Petite voiture : 1 000 FCFA',
+          'Grande voiture / SUV : 2 000 FCFA',
+          'Séchage microfibre haute absorption',
+        ],
+      },
+      {
+        id: 'complet',
+        name: 'Formule Lavage Complet',
+        price: '1 500 - 3 000 FCFA',
+        time: '1h 15 min',
+        features: [
+          'Lavage Intérieur & Extérieur',
+          'Petite voiture : 1 500 FCFA',
+          'Grande voiture / SUV : 3 000 FCFA',
+          'Aspiration habitacle, vitres & brillant pneus',
+        ],
+      },
+      {
+        id: 'fond',
+        name: 'Lavage à Fond (Intégral)',
+        price: 'À partir de 13 000 FCFA',
+        time: '3h 00 min',
+        features: [
+          'Shampoing en profondeur sièges & moquettes',
+          'Nettoyage et décontamination moteur & coffre',
+          'Rénovation et soin cuir & plastiques',
+          'Désinfection complète de l’habitacle',
+        ],
+      },
     ],
     moto: [
-      { id: 'express', name: 'Lavage Quick Moto', price: '25 €', time: '30 min', features: ['Dégraissage chaîne & jantes', 'Lavage carénage doux', 'Séchage souffleur chaud'] },
-      { id: 'complet', name: 'Soin Moto Complet', price: '50 €', time: '1h 00 min', features: ['Lavage minutieux moteur & pot', 'Lustrage carénage & bulle', 'Graissage chaîne & protection'] },
+      {
+        id: 'express',
+        name: 'Lavage Standard Moto',
+        price: '500 FCFA',
+        time: '20 min',
+        features: ['Nettoyage mousse active carénage', 'Dégraissage jantes & transmission', 'Séchage soigné'],
+      },
+      {
+        id: 'complet',
+        name: 'Soin Complet & Brillance',
+        price: '1 000 FCFA',
+        time: '45 min',
+        features: ['Lavage minutieux moteur & pièces cachées', 'Lustrage carrosserie & phares', 'Graissage & protection'],
+      },
     ],
     tapis: [
-      { id: 'express', name: 'Nettoyage Tapis Simple', price: '20 €', time: '30 min', features: ['Aspiration haute puissance', 'Détachage ciblé'] },
-      { id: 'complet', name: 'Injection / Extraction Deep', price: '40 €', time: '1h 00 min', features: ['Lavage injection-extraction', 'Traitement anti-bactérien & anti-odeurs', 'Séchage thermique rapide'] },
+      {
+        id: 'express',
+        name: 'Nettoyage Tapis Simple',
+        price: '1 500 FCFA',
+        time: '30 min',
+        features: ['Aspiration puissante fibres', 'Détachage ciblé des surfaces'],
+      },
+      {
+        id: 'complet',
+        name: 'Shampoing Tapis en Profondeur',
+        price: '3 000 FCFA',
+        time: '1h 00 min',
+        features: ['Lavage injection-extraction', 'Traitement anti-bactérien & anti-acariens', 'Séchage rapide'],
+      },
     ],
     meuble: [
-      { id: 'express', name: 'Nettoyage Siège / Fauteuil', price: '30 €', time: '45 min', features: ['Dépoussiérage textile', 'Traitement des taches localisées'] },
-      { id: 'complet', name: 'Rénovation Canapé (2-4 places)', price: '85 €', time: '1h 30 min', features: ['Injection / Extraction intégrale', 'Désinfection & désodorisation', 'Protection anti-taches'] },
+      {
+        id: 'express',
+        name: 'Nettoyage Siège / Fauteuil',
+        price: '2 000 FCFA',
+        time: '45 min',
+        features: ['Dépoussiérage textile', 'Détachage localisé tissus ou simili'],
+      },
+      {
+        id: 'complet',
+        name: 'Rénovation Canapé Complet',
+        price: '8 000 FCFA',
+        time: '1h 30 min',
+        features: ['Injection / extraction intégrale', 'Désinfection & désodorisation textile', 'Protection anti-taches'],
+      },
     ],
   };
 
@@ -68,7 +137,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
             <span className="font-heading font-black italic text-xl text-white">LAVAGE</span>
             <span className="font-heading font-black italic text-xl text-[#FFB800]">DKB</span>
             <span className="text-xs font-heading font-bold text-slate-400 border-l border-slate-700 pl-2">
-              RESERVATION
+              RÉSERVATION
             </span>
           </div>
           <button
@@ -95,9 +164,10 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 <span className="text-white font-bold">{selectedDate || 'demain'} à {selectedTime}</span> a bien été enregistrée.
               </p>
               <div className="p-4 rounded-xl bg-[#020714] border border-[#1a2d52] text-left max-w-md mx-auto text-xs space-y-2">
-                <p><span className="text-slate-400">Référence:</span> <strong className="text-[#FFB800]">DKB-2025-{Math.floor(1000 + Math.random() * 9000)}</strong></p>
-                <p><span className="text-slate-400">Téléphone:</span> <span className="text-slate-200">{formData.phone}</span></p>
-                <p><span className="text-slate-400">Lieu:</span> <span className="text-slate-200">123 Rue de la Propreté, 75000 Paris (ou à domicile)</span></p>
+                <p><span className="text-slate-400">Référence:</span> <strong className="text-[#FFB800]">DKB-2026-{Math.floor(1000 + Math.random() * 9000)}</strong></p>
+                <p><span className="text-slate-400">Téléphone client:</span> <span className="text-slate-200">{formData.phone}</span></p>
+                <p><span className="text-slate-400">Centre DKB:</span> <span className="text-slate-200">Von avant l’église catholique de Dèkoungbé (ou à domicile)</span></p>
+                <p><span className="text-slate-400">Contact DKB:</span> <span className="text-[#FFB800] font-bold">+229 01 99 24 88 03</span></p>
               </div>
               <button
                 onClick={resetAndClose}
@@ -132,7 +202,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                       {[
                         { id: 'auto', name: 'AUTO' },
-                        { id: 'moto', name: 'MOTO' },
+                        { id: 'moto', name: 'MOTO (500 F)' },
                         { id: 'tapis', name: 'TAPIS' },
                         { id: 'meuble', name: 'MEUBLE' },
                       ].map((s) => (
@@ -225,7 +295,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       Choisissez le créneau horaire :
                     </label>
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
-                      {['08:30', '10:00', '11:30', '14:00', '15:30', '17:00', '18:15'].map((time) => (
+                      {['07:30', '09:00', '10:30', '12:00', '14:00', '15:30', '17:00', '18:00'].map((time) => (
                         <button
                           key={time}
                           type="button"
@@ -273,7 +343,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     <input
                       type="text"
                       required
-                      placeholder="Jean Dupont"
+                      placeholder="Ex: Paul Dossou"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full bg-[#020817] border border-[#1a2d52] rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#FFB800]"
@@ -283,12 +353,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-heading font-bold uppercase text-slate-300 mb-1">
-                        Numéro de Téléphone *
+                        Numéro de Téléphone / WhatsApp *
                       </label>
                       <input
                         type="tel"
                         required
-                        placeholder="06 12 34 56 78"
+                        placeholder="01 99 24 88 03"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="w-full bg-[#020817] border border-[#1a2d52] rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#FFB800]"
@@ -300,7 +370,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       </label>
                       <input
                         type="email"
-                        placeholder="jean.dupont@email.com"
+                        placeholder="marval1598@gmail.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className="w-full bg-[#020817] border border-[#1a2d52] rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#FFB800]"
@@ -310,11 +380,11 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
                   <div>
                     <label className="block text-xs font-heading font-bold uppercase text-slate-300 mb-1">
-                      Modèle / Marque du véhicule
+                      Modèle / Marque du véhicule ou type de meuble
                     </label>
                     <input
                       type="text"
-                      placeholder="Ex: Audi A4, Yamaha MT-07, Canapé 3 places..."
+                      placeholder="Ex: Toyota RAV4, Moto Haojue, Canapé 3 places..."
                       value={formData.vehicle}
                       onChange={(e) => setFormData({ ...formData, vehicle: e.target.value })}
                       className="w-full bg-[#020817] border border-[#1a2d52] rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#FFB800]"
